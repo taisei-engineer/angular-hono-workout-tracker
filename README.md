@@ -1,59 +1,79 @@
-# AngularHonoWorkoutTracker
+# ワークアウト記録アプリ
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+シンプルで使いやすいワークアウト記録アプリケーションです。筋トレの記録を簡単に管理できます。
 
-## Development server
+## 主な機能
 
-To start a local development server, run:
+### 1. ワークアウトの記録
 
-```bash
-ng serve
+- 複数の種目（エクササイズ）を一度に登録可能
+- 各種目に対して複数のセットを記録
+- セットごとの重量(kg)と回数を記録
+- 直感的な UI で簡単に入力可能
+
+### 2. 履歴の管理
+
+- 記録したワークアウトを時系列で表示
+- 日付、種目名、セット数、重量、回数などの詳細を確認可能
+- 見やすい履歴一覧でトレーニングの進捗を確認
+
+## プロジェクト構造
+
+```
+angular-hono-workout-tracker/
+├── src/                      # フロントエンド (Angular)
+│   ├── app/
+│   │   ├── components/       # UIコンポーネント
+│   │   │   ├── workout-form/ # ワークアウト入力フォーム
+│   │   │   └── workout-list/ # ワークアウト一覧表示
+│   │   ├── models/           # データモデル
+│   │   │   └── workout.model.ts
+│   │   ├── services/         # APIとの通信を担当
+│   │   │   └── workout.service.ts
+│   │   ├── app.component.ts  # ルートコンポーネント
+│   │   └── app.routes.ts     # ルーティング設定
+│   ├── global_styles.css     # グローバルスタイル
+│   ├── index.html            # メインHTML
+│   └── main.ts               # エントリーポイント
+│
+├── server/                   # バックエンド (Hono)
+│   └── src/
+│       ├── routes/           # APIルート
+│       │   └── workout.ts    # ワークアウト関連のエンドポイント
+│       ├── types/            # 型定義
+│       │   └── workout.ts    # ワークアウト関連の型
+│       └── index.ts          # サーバーのエントリーポイント
+│
+├── package.json              # 依存関係とスクリプト
+└── tsconfig.json             # TypeScript設定
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 技術スタック
 
-## Code scaffolding
+### フロントエンド
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 18
+- TypeScript
 
-```bash
-ng generate component component-name
-```
+### バックエンド
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Hono
+- TypeScript
+- Cloudflare Workers
 
-```bash
-ng generate --help
-```
+### 開発ツール
 
-## Building
+- Wrangler
+- Concurrently
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 開発環境のセットアップ
 
 ```bash
-ng test
+# 依存関係のインストール
+npm install
+
+# 開発サーバーの起動
+npm start
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+開発サーバーは `http://localhost:4200/` で起動します。
